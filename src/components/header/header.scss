@@ -1,0 +1,10 @@
+$backgroundColor: #eee;
+
+header {
+  background: darken($backgroundColor, 75);
+  border-bottom: 4px solid #986785;
+  color: #B8CB9A;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}

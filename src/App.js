@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import './app.scss';
+
+import Header from './components/header';
+import Footer from './components/footer';
+import Form from './components/form';
+import Results from './components/results';
 
 function App() {
+  const [data, setData] = useState(null);
+  const [requestParams, setRequestParams] = useState({});
+
+  const callApi = (params) => {
+    // mock output
+    const mockData = {
+      count: 2,
+      results: [
+        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
+        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
+      ],
+    };
+    setData(mockData);
+    setRequestParams(params)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main>
+        <div>Request Method: {requestParams.method}</div>
+        <div>URL: {requestParams.url}</div>
+        <Form handleApiCall={callApi} />
+        <Results data={data} />
+      </main>
+      <Footer />
+    </>
   );
 }
 

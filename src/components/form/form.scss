@@ -1,0 +1,31 @@
+$radius: 40%;
+
+form {
+  display: inline-block;
+  width: 30rem;
+  background-color: #70A1AB;
+
+  label {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 3rem;
+    gap: 1rem;
+
+    input{
+      flex: 1 1 0;
+    }
+
+    &.methods {
+      span {
+        cursor: pointer;
+        margin-right: 1rem;
+        padding: .25rem .5rem;
+        background: #ccc;
+
+        &:hover, &.active {
+          background: #fff;
+        }
+      }
+    }
+  }
+}

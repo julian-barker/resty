@@ -1,6 +1,6 @@
 name: Build and Test React Application
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch // branches can likely be changed, or added to array
   push:
@@ -16,8 +16,8 @@ jobs:
 
     strategy:
       matrix:
-      # need to build and test for MULTIPLE node versions?  we can! or test one version! 
-        node-version: [16.x, 18.x, 19.x]
+      # need to build and test for MULTIPLE node versions?  we can! or test one version!
+        node-version: [19.x]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -31,4 +31,3 @@ jobs:
           npm i
           npm run build --if-present
           npm test
-      

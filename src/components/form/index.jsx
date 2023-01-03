@@ -1,6 +1,6 @@
 import './form.scss';
 
-function Form(props) {
+export default function Form(props) {
   const handleSubmit = e => {
     e.preventDefault();
     const formData = {
@@ -26,5 +26,3 @@ function Form(props) {
     </form>
   );
 }
-
-export default Form;

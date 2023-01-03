@@ -52,7 +52,7 @@ Simple, intuitive user interface
 
 ### Links and Resources
 
-- No deployment yet.
+- [Deployed Site](https://funny-cocada-2218cc.netlify.app/)
 
 ### UML
 

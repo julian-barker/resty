@@ -1,51 +1,49 @@
-import React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
 import './app.scss';
 
-// Let's talk about using index.js and some other name in the component folder
-// There's pros and cons for each way of doing this ...
 import Header from './components/header';
 import Footer from './components/footer';
 import Form from './components/form';
 import Results from './components/results';
 
-class App extends React.Component {
+function App() {
+  const [response, setResponse] = useState({});
+  const [requestParams, setRequestParams] = useState({});
+  const [loading, setLoading] = useState(false);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      requestParams: {},
-    };
+  const callApi = async (requestParams) => {
+    // request params: {method, url, body}
+    setLoading(true);
+    setRequestParams(requestParams);
+    const { method, url, body } = requestParams;
+
+    const response = await axios({
+      method,
+      url,
+      data: body,
+    });
+
+    setLoading(false);
+    setResponse({
+      headers: response.headers,
+      body: response.data,
+    });
   }
 
-  callApi = (requestParams) => {
-    // mock output
-    const data = {
-      count: 2,
-      results: [
-        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
-      ],
-    };
-    this.setState({data, requestParams});
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <Header />
-        <main>
-          <div>Request Method: {this.state.requestParams.method}</div>
-          <div>URL: {this.state.requestParams.url}</div>
-          <Form handleApiCall={this.callApi} />
-          <Results data={this.state.data} />
-        </main>
-        <Footer />
-      </React.Fragment>
-    );
-  }
+  return (
+    <>
+      <Header />
+      <main>
+        <div>Request Method: {requestParams.method}</div>
+        <div>URL: {requestParams.url}</div>
+        <Form handleApiCall={callApi} />
+        <Results response={response} loading={loading} />
+      </main>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
-

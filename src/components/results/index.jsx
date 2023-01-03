@@ -1,9 +1,26 @@
 import './results.scss';
 
 export default function Results(props) {
+  const { headers, body } = props.response;
   return (
     <section>
-      <pre>{props.data ? JSON.stringify(props.data, undefined, 2) : null}</pre>
+        {props.loading ?
+          'Loading' :
+          <>
+            <pre>
+              {headers ?
+                'Headers: ' + JSON.stringify(headers, undefined, 2) :
+                null
+              }
+            </pre>
+            <pre>
+              {body ?
+                'Body: ' + JSON.stringify(body, undefined, 2) :
+                null
+              }
+            </pre>
+          </>
+        }
     </section>
   );
 }

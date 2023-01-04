@@ -12,8 +12,10 @@ export default function Form(props) {
     const formData = {
       method,
       url,
-      body,
     };
+    if (method === 'POST' || method === 'PUT') {
+      formData.body = body;
+    }
     props.handleApiCall(formData);
   }
 
@@ -35,17 +37,17 @@ export default function Form(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form data-testid="form-form" onSubmit={handleSubmit}>
       <label >
         <span>URL: </span>
-        <input name='url' type='text' onChange={handleUrlChange}/>
-        <button type="submit">GO!</button>
+        <input data-testid="form-input" name='url' type='text' onChange={handleUrlChange}/>
+        <button data-testid="form-button" type="submit">GO!</button>
       </label>
       <label className="methods">
-        <span id="get" onClick={handleChangeMethod}>GET</span>
-        <span id="post" onClick={handleChangeMethod}>POST</span>
-        <span id="put" onClick={handleChangeMethod}>PUT</span>
-        <span id="delete" onClick={handleChangeMethod}>DELETE</span>
+        <span id="get" className={method === 'GET' ? 'active' : null } onClick={handleChangeMethod}>GET</span>
+        <span id="post" className={method === 'POST' ? 'active' : null } onClick={handleChangeMethod}>POST</span>
+        <span id="put" className={method === 'PUT' ? 'active' : null } onClick={handleChangeMethod}>PUT</span>
+        <span id="delete" className={method === 'DELETE' ? 'active' : null } onClick={handleChangeMethod}>DELETE</span>
       </label>
       {method === 'POST' || method === 'PUT' ?
         <label>

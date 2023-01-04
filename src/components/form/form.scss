@@ -22,8 +22,14 @@ form {
         padding: .25rem .5rem;
         background: #ccc;
 
-        &:hover, &.active {
+        &:hover {
           background: #fff;
+          transform: scale(1.2);
+          transition: all 200ms;
+        }
+
+        &.active {
+          background: coral;
         }
       }
     }

@@ -18,12 +18,20 @@ function App() {
     setLoading(true);
     setRequestParams(requestParams);
     const { method, url, body } = requestParams;
+    console.log('🚀 ~ file: app.jsx:21 ~ callApi ~ requestParams', requestParams);
 
     const response = await axios({
       method,
       url,
       data: body,
     });
+    // const options = { method };
+    // if(body) {
+    //   options.body = body;
+    // }
+
+    // const response = await fetch(url, options);
+    // const json = await response.json();
 
     setLoading(false);
     setResponse({

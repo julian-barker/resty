@@ -13,7 +13,7 @@ export default function Results(props) {
                 null
               }
             </pre>
-            <pre>
+            <pre data-testid="result-body">
               {body ?
                 'Body: ' + JSON.stringify(body, undefined, 2) :
                 null

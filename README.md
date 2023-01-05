@@ -56,7 +56,7 @@ Simple, intuitive user interface
 
 ### UML
 
-![UML-11](./assets/lab-11-UML.png)
+<!-- ![UML-26](./assets/lab-11-UML.png) -->
 
 ### Setup
 

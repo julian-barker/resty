@@ -1,7 +1,10 @@
-$backgroundColor: #eee;
+$backgroundColor: #ecf;
 
 footer {
-  background: darken($backgroundColor, 50);
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background: scale-color($backgroundColor, $lightness: -50%);
   border-top: 4px solid #986785;
   padding: 1rem 3rem;
   margin: 0;

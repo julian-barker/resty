@@ -2,7 +2,7 @@ $radius: 40%;
 
 form {
   display: inline-block;
-  width: 30rem;
+  width: 40rem;
   background-color: #70A1AB;
 
   label {
@@ -32,6 +32,17 @@ form {
           background: coral;
         }
       }
+
+    }
+    textarea.invalid::before {
+      content: '<p>Content is not valid JSON</p>';
+      color: red;
+    }
+
+    textarea.invalid {
+      border: 2px solid red;
     }
   }
+
 }
+

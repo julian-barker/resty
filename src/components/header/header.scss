@@ -1,7 +1,7 @@
-$backgroundColor: #eee;
+$backgroundColor: #ecf;
 
 header {
-  background: darken($backgroundColor, 75);
+  background: scale-color($backgroundColor, $lightness: -80%);
   border-bottom: 4px solid #986785;
   color: #B8CB9A;
   padding: 0;

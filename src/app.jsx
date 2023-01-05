@@ -16,6 +16,8 @@ function App() {
   useEffect(() => {
     const callApi = async (requestParams) => {
       // request params: {method, url, body}
+      if(!requestParams.method) return;
+
       setLoading(true);
       const { method, url, body } = requestParams;
       console.log('🚀 ~ file: app.jsx:21 ~ callApi ~ requestParams', requestParams);
@@ -44,9 +46,11 @@ function App() {
     <>
       <Header />
       <main>
-        <div>Request Method: {requestParams.method}</div>
-        <div>URL: {requestParams.url}</div>
-        <Form handleRequest={updateParams} />
+        <div>
+          <div>Request Method: {requestParams.method}</div>
+          <div>URL: {requestParams.url}</div>
+          <Form handleRequest={updateParams} />
+        </div>
         <Results response={response} loading={loading} />
       </main>
       <Footer />

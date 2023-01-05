@@ -32,6 +32,17 @@ form {
           background: coral;
         }
       }
+
+    }
+    textarea.invalid::before {
+      content: '<p>Content is not valid JSON</p>';
+      color: red;
+    }
+
+    textarea.invalid {
+      border: 2px solid red;
     }
   }
+
 }
+

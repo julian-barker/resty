@@ -2,6 +2,15 @@ import { useState } from 'react';
 
 import './form.scss';
 
+function validateJson(json) {
+  try {
+    JSON.parse(json);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
 export default function Form(props) {
   const [ method, setMethod ] = useState('GET');
   const [ body, setBody ] = useState('');
@@ -16,7 +25,7 @@ export default function Form(props) {
     if (method === 'POST' || method === 'PUT') {
       formData.body = body;
     }
-    props.handleApiCall(formData);
+    props.handleRequest(formData);
   }
 
   const handleChangeMethod = (e) => {
@@ -54,6 +63,7 @@ export default function Form(props) {
           <textarea id="body" rows="10" cols="100"
             placeholder="Enter JSON body here..."
             onChange={handleBodyChange}
+            className={validateJson(body) ? 'valid' : 'invalid'}
           >
           </textarea>
         </label>

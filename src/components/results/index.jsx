@@ -1,7 +1,7 @@
 import './results.scss';
 
 export default function Results(props) {
-  const { headers, body } = props.response;
+  const { headers, body } = props.results;
   return (
     <section>
         {props.loading ?
